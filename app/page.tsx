@@ -10,7 +10,7 @@ export default function Home() {
   return <main>
     <header className="site-header">
       <a className="brand" href="#top" aria-label="Rafique Syed, home"><span className="brand-mark">RS</span><span>Rafique Syed</span></a>
-      <nav aria-label="Main navigation"><a href="#approach">Approach</a><a href="#experience">Experience</a><a href="#writing">Thinking</a></nav>
+      <nav aria-label="Main navigation"><a href="#approach">Approach</a><a href="#experience">Experience</a><a href="#writing">Thinking</a><a href="#beyond">Beyond work</a></nav>
       <a className="nav-cta" href="https://www.linkedin.com/in/rafiquesyed/" target="_blank" rel="noreferrer">Connect <span aria-hidden="true">↗</span></a>
     </header>
 
@@ -36,6 +36,11 @@ export default function Home() {
     <section className="flowops section"><div className="flow-badge">FO<span>✦</span></div><div><p className="kicker">FOUNDER / ADVISOR</p><h2>FlowOpsX</h2><p>Helping organizations build AI-enabled reliability practices, modern internal platforms, and cloud operations that scale with the business—not against it.</p></div><a className="circle-link" href="https://www.linkedin.com/in/rafiquesyed/" target="_blank" rel="noreferrer" aria-label="Discuss advisory work">↗</a></section>
 
     <section className="writing section" id="writing"><div className="section-heading compact"><p className="kicker">FIELD NOTES</p><h2>Ideas for the<br/>next operating model.</h2><p>Essays and working notes on engineering leadership, AI, reliability, and the craft of building platforms.</p></div><div className="notes">{fieldNotes.map(([tag,title],i)=><article className="note" key={title}><span className="note-index">0{i+1}</span><div><p>{tag}</p><h3>{title}</h3><span className="coming">COMING SOON</span></div><span className="arrow">↗</span></article>)}</div></section>
+
+    <section className="offbeat" id="beyond">
+      <div className="drum-art" aria-hidden="true"><div className="cymbal cymbal-one"/><div className="cymbal cymbal-two"/><div className="drum drum-one"/><div className="drum drum-two"/><div className="drum drum-three"/><span className="stick stick-one"/><span className="stick stick-two"/><div className="beat">1 · 2 · 3 · 4</div></div>
+      <div className="offbeat-copy"><p className="kicker light">OFF THE CLOCK · ON THE BEAT</p><h2>When I’m not deploying,<br/><em>I’m playing drums.</em></h2><p>Technology gives me systems. Music gives me rhythm. Behind the kit, I explore Indian rhythm, percussion, and the joy of making something together.</p><a className="instagram-link" href="https://www.instagram.com/explore/tags/taalchemy/" target="_blank" rel="noreferrer" aria-label="Explore Taalchemy on Instagram"><span>◎</span><div><small>FOLLOW THE RHYTHM ON INSTAGRAM</small><strong>#Taalchemy</strong></div><b>↗</b></a></div>
+    </section>
 
     <footer><div><p className="kicker light">LET’S BUILD CALMER SYSTEMS</p><h2>Good engineering<br/>should feel <em>inevitable.</em></h2></div><div className="footer-links"><a href="https://www.linkedin.com/in/rafiquesyed/" target="_blank" rel="noreferrer">Start a conversation ↗</a><a href="#top">Back to top ↑</a></div><p className="copyright">© 2026 Rafique Syed <span>AI-first reliability · Thoughtfully engineered</span></p></footer>
   </main>;
