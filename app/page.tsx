@@ -7,7 +7,7 @@ const fieldNotes = [['AI + Operations', 'From noisy telemetry to useful decision
 const journey = [
   ['01 · FOUNDATIONS', 'SCM & the software lifecycle', 'Built depth in source control, branching, build engineering, release governance, and the discipline required to make software delivery repeatable.'],
   ['02 · TRANSFORMATION', 'SDLC & CI/CD evangelism', 'Helped teams rethink how software should move from an idea to production—championing automation, continuous integration, delivery pipelines, and better engineering feedback loops.'],
-  ['03 · SCALE', 'Cloud-native engineering', 'Moved into cloud computing with hands-on experience across AWS, Azure, and GCP, then Kubernetes, containers, microservices, and the operational patterns needed to run distributed systems well.'],
+  ['03 · SCALE', 'Cloud-native engineering & FinOps', 'Moved into cloud computing across AWS, Azure, and GCP, then Kubernetes, containers, and microservices. Applied FinOps to make cloud cost visible and actionable—building ownership, forecasting, rightsizing, and unit-economics thinking into everyday engineering decisions without trading away reliability.'],
   ['04 · NOW', 'Reliability, platforms & AI', 'Today I connect that full lifecycle: SRE, platform engineering, cloud reliability, developer productivity, and pragmatic AI that helps teams understand and operate complex systems.'],
 ];
 
@@ -34,7 +34,7 @@ export default function Home() {
       <div className="chapter-list">{chapters.map(([number,title,copy]) => <article className="chapter" key={number}><span>{number}</span><div><h3>{title}</h3><p>{copy}</p></div></article>)}</div>
     </section>
 
-    <section className="experience section" id="experience"><div className="experience-story"><p className="kicker light">THE LONG VIEW</p><h2>I’ve worked through the full evolution of modern software delivery.</h2><p>My perspective wasn’t formed around one tool, cloud, or job title. It was built layer by layer—from the mechanics of configuration management to the organizational systems behind reliable, AI-enabled platforms.</p><div className="stat-row"><div><strong>22+</strong><span>YEARS IN TECHNOLOGY</span></div><div><strong>3</strong><span>MAJOR CLOUDS</span></div><div><strong>4</strong><span>ENGINEERING ERAS</span></div></div><p className="org-context">Career experience includes ADP, Nokia, Microsoft, Jio, Deutsche Bank, Credit Suisse, and NetApp.</p></div>
+    <section className="experience section" id="experience"><div className="experience-story"><p className="kicker light">THE LONG VIEW</p><h2>I’ve worked through the full evolution of modern software delivery.</h2><p>My perspective wasn’t formed around one tool, cloud, or job title. It was built layer by layer—from the mechanics of configuration management to the organizational systems behind reliable, AI-enabled platforms.</p><div className="operating-lens"><span>RELIABILITY</span><i>×</i><span>SPEED</span><i>×</i><span>ECONOMICS</span><p>Engineering decisions work best when operational resilience, delivery flow, and cloud economics are considered together.</p></div><p className="org-context">Career experience includes ADP, Nokia, Microsoft, Jio, Deutsche Bank, Credit Suisse, and NetApp.</p></div>
       <div className="journey-list">{journey.map(([label,title,copy])=><article className="journey-step" key={label}><span>{label}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
     </section>
 
