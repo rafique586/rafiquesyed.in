@@ -38,8 +38,6 @@ export default function Home() {
       <div className="journey-list">{journey.map(([label,title,copy])=><article className="journey-step" key={label}><span>{label}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
     </section>
 
-    <section className="flowops section"><div className="flow-badge">FO<span>✦</span></div><div><p className="kicker">FOUNDER / ADVISOR</p><h2>FlowOpsX</h2><p>Helping organizations build AI-enabled reliability practices, modern internal platforms, and cloud operations that scale with the business—not against it.</p></div><a className="circle-link" href="https://www.linkedin.com/in/rafiquesyed/" target="_blank" rel="noreferrer" aria-label="Discuss advisory work">↗</a></section>
-
     <section className="writing section" id="writing"><div className="section-heading compact"><p className="kicker">FIELD NOTES</p><h2>Ideas for the<br/>next operating model.</h2><p>Essays and working notes on engineering leadership, AI, reliability, and the craft of building platforms.</p></div><div className="notes">{fieldNotes.map(([tag,title],i)=><article className="note" key={title}><span className="note-index">0{i+1}</span><div><p>{tag}</p><h3>{title}</h3><span className="coming">COMING SOON</span></div><span className="arrow">↗</span></article>)}</div></section>
 
     <section className="offbeat" id="beyond">
