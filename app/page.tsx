@@ -3,8 +3,13 @@ const chapters = [
   ['02', 'Platforms people choose', 'The best platform is a product, not a mandate. I help teams remove friction from the path to production with paved roads, strong feedback loops, and developer experience that earns adoption.'],
   ['03', 'AI with operational judgment', 'I apply AI where it compounds human expertise: investigation, knowledge retrieval, change risk, repetitive operations, and the signal-to-decision gap—always with guardrails and accountability.'],
 ];
-const experience = ['NetApp', 'ADP', 'Nokia', 'Microsoft', 'Jio', 'Deutsche Bank', 'Credit Suisse'];
 const fieldNotes = [['AI + Operations', 'From noisy telemetry to useful decisions'], ['Platform Engineering', 'Why internal platforms must earn trust'], ['Leadership', 'Reliability is an organizational capability']];
+const journey = [
+  ['01 · FOUNDATIONS', 'SCM & the software lifecycle', 'Built depth in source control, branching, build engineering, release governance, and the discipline required to make software delivery repeatable.'],
+  ['02 · TRANSFORMATION', 'SDLC & CI/CD evangelism', 'Helped teams rethink how software should move from an idea to production—championing automation, continuous integration, delivery pipelines, and better engineering feedback loops.'],
+  ['03 · SCALE', 'Cloud-native engineering', 'Moved into cloud computing with hands-on experience across AWS, Azure, and GCP, then Kubernetes, containers, microservices, and the operational patterns needed to run distributed systems well.'],
+  ['04 · NOW', 'Reliability, platforms & AI', 'Today I connect that full lifecycle: SRE, platform engineering, cloud reliability, developer productivity, and pragmatic AI that helps teams understand and operate complex systems.'],
+];
 
 export default function Home() {
   return <main>
@@ -29,8 +34,8 @@ export default function Home() {
       <div className="chapter-list">{chapters.map(([number,title,copy]) => <article className="chapter" key={number}><span>{number}</span><div><h3>{title}</h3><p>{copy}</p></div></article>)}</div>
     </section>
 
-    <section className="experience section" id="experience"><div className="experience-story"><p className="kicker light">THE LONG VIEW</p><h2>22+ years across the systems that keep business moving.</h2><p>From enterprise infrastructure and cloud transformation to SRE, developer platforms, and AI-enabled operations, I’ve led through each shift with a practical bias: improve the system and grow the people operating it.</p><div className="stat-row"><div><strong>22+</strong><span>YEARS LEADING</span></div><div><strong>7</strong><span>GLOBAL BRANDS</span></div><div><strong>1</strong><span>OPERATING PRINCIPLE</span></div></div></div>
-      <div className="company-cloud"><p>EXPERIENCE SPANNING</p>{experience.map((company,index)=><span className={`company c${index+1}`} key={company}>{company}</span>)}<small>Roles and engagements across a career in enterprise technology.</small></div>
+    <section className="experience section" id="experience"><div className="experience-story"><p className="kicker light">THE LONG VIEW</p><h2>I’ve worked through the full evolution of modern software delivery.</h2><p>My perspective wasn’t formed around one tool, cloud, or job title. It was built layer by layer—from the mechanics of configuration management to the organizational systems behind reliable, AI-enabled platforms.</p><div className="stat-row"><div><strong>22+</strong><span>YEARS IN TECHNOLOGY</span></div><div><strong>3</strong><span>MAJOR CLOUDS</span></div><div><strong>4</strong><span>ENGINEERING ERAS</span></div></div><p className="org-context">Career experience includes ADP, Nokia, Microsoft, Jio, Deutsche Bank, Credit Suisse, and NetApp.</p></div>
+      <div className="journey-list">{journey.map(([label,title,copy])=><article className="journey-step" key={label}><span>{label}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
     </section>
 
     <section className="flowops section"><div className="flow-badge">FO<span>✦</span></div><div><p className="kicker">FOUNDER / ADVISOR</p><h2>FlowOpsX</h2><p>Helping organizations build AI-enabled reliability practices, modern internal platforms, and cloud operations that scale with the business—not against it.</p></div><a className="circle-link" href="https://www.linkedin.com/in/rafiquesyed/" target="_blank" rel="noreferrer" aria-label="Discuss advisory work">↗</a></section>
