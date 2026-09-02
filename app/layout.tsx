@@ -11,13 +11,13 @@ export const metadata: Metadata = {
   description: 'Rafique Syed writes about platform engineering, cloud reliability, DevOps, FinOps, and the practical use of AI in engineering operations.',
   openGraph: {
     title: 'Rafique Syed | Platform, Cloud & AI Engineering Leader',
-    description: 'Notes from 25 years working across software delivery, cloud platforms, reliability, cost, and engineering operations.',
+    description: 'Notes from more than two decades working across software delivery, cloud platforms, reliability, cost, and engineering operations.',
     images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Rafique Syed, Platform, Cloud & AI Engineering Leader' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Rafique Syed | Platform, Cloud & AI Engineering Leader',
-    description: 'Notes from 25 years working across software delivery, cloud platforms, reliability, cost, and engineering operations.',
+    description: 'Notes from more than two decades working across software delivery, cloud platforms, reliability, cost, and engineering operations.',
     images: ['/og.png'],
   },
 };

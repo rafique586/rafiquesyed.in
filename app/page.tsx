@@ -16,7 +16,7 @@ export default function Home() {
   return <main>
     <header className="site-header">
       <a className="brand" href="#top" aria-label="Rafique Syed, home"><span className="brand-mark">RS</span><span>Rafique Syed</span></a>
-      <nav aria-label="Main navigation"><a href="#about">About</a><a href="#perspective">Perspective</a><a href="#approach">Approach</a><a href="#experience">Experience</a><a href="#writing">Thinking</a><a href="#beyond">Beyond</a></nav>
+      <nav aria-label="Main navigation"><a href="#about">About</a><a href="#perspective">Perspective</a><a href="#approach">Approach</a><a href="#experience">Experience</a><a href="/writing">Writing</a><a href="#beyond">Beyond</a></nav>
       <a className="nav-cta" href="https://www.linkedin.com/in/rafiquesyed/" target="_blank" rel="noreferrer">Connect <span aria-hidden="true">↗</span></a>
     </header>
 
@@ -33,7 +33,7 @@ export default function Home() {
 
     <section className="about section" id="about">
       <div className="about-lead"><p className="kicker">ABOUT</p><h2>The titles changed.<br/><em>I stayed close to the problems.</em></h2></div>
-      <div className="about-story"><p className="about-opening">I’ve spent 25 years working in technology. I started by building and running infrastructure inside regulated banks. Today, I lead platform engineering and cloud reliability for a large enterprise technology organization.</p><p>I lead a team of more than 100 engineers working across multi-cloud platforms. We deal with reliability, software delivery, cloud cost, and the growing role of AI in operations. These areas affect one another every day, so I do not treat them as separate jobs.</p><p>I still enjoy getting close to the actual problem. That might be an availability issue, an unexpected cloud bill, a slow delivery process, or an operational task that takes too much of an engineer’s time.</p><div className="current-focus"><span>WHAT I AM WORKING ON NOW</span><strong>Composite SLO and SLI models · Availability at scale · Useful AI agents for engineering operations</strong></div></div>
+      <div className="about-story"><p className="about-opening">I’ve spent more than two decades working in technology. I started by building and running infrastructure inside regulated banks. Today, I lead platform engineering and cloud reliability for a large enterprise technology organization.</p><p>I have led large engineering teams working across multi-cloud platforms, DevOps, SRE, FinOps, and operations. The scope has changed over time, but the work has consistently been about helping people and systems operate well together.</p><p>I still enjoy getting close to the actual problem. That might be an availability issue, an unexpected cloud bill, a slow delivery process, or an operational task that takes too much of an engineer’s time.</p><div className="current-focus"><span>WHAT I AM WORKING ON NOW</span><strong>Composite SLO and SLI models · Availability at scale · Useful AI agents for engineering operations</strong></div></div>
     </section>
 
     <section className="perspective section" id="perspective">
@@ -53,7 +53,7 @@ export default function Home() {
       <div className="journey-list">{journey.map(([label,title,copy])=><article className="journey-step" key={label}><span>{label}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
     </section>
 
-    <section className="writing section" id="writing"><div className="section-heading compact"><p className="kicker">FIELD NOTES</p><h2>Ideas for the<br/>next operating model.</h2><p>Essays and working notes on engineering leadership, AI, reliability, and the craft of building platforms.</p></div><div className="notes">{fieldNotes.map(([tag,title],i)=><article className="note" key={title}><span className="note-index">0{i+1}</span><div><p>{tag}</p><h3>{title}</h3><span className="coming">COMING SOON</span></div><span className="arrow">↗</span></article>)}</div></section>
+    <section className="writing section" id="writing"><div className="section-heading compact"><p className="kicker">FIELD NOTES</p><h2>A record of what<br/>I’m learning.</h2><p>Essays and working notes on engineering leadership, AI, reliability, and the craft of building platforms.</p><a className="archive-link" href="/writing">Explore the writing archive <span>↗</span></a></div><div className="notes">{fieldNotes.map(([tag,title],i)=><a className="note" href="/writing" key={title}><span className="note-index">0{i+1}</span><div><p>{tag}</p><h3>{title}</h3><span className="coming">IN PROGRESS</span></div><span className="arrow">↗</span></a>)}</div></section>
 
     <section className="offbeat" id="beyond">
       <div className="drum-art" aria-hidden="true"><div className="cymbal cymbal-one"/><div className="cymbal cymbal-two"/><div className="drum drum-one"/><div className="drum drum-two"/><div className="drum drum-three"/><span className="stick stick-one"/><span className="stick stick-two"/><div className="beat">1 · 2 · 3 · 4</div></div>
