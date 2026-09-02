@@ -7,17 +7,17 @@ const serif = Instrument_Serif({ variable: '--font-serif', subsets: ['latin'], w
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://rafiquesyed.in'),
-  title: 'Rafique Syed — AI-first Reliability & Platform Engineering Leader',
-  description: 'Rafique Syed is a senior SRE, platform engineering, and cloud reliability leader helping organizations move faster with calm, AI-enabled operations.',
+  title: 'Rafique Syed — Platform, Cloud & AI Engineering Leader',
+  description: 'Technologist and engineering leader connecting platform engineering, cloud reliability, DevOps, FinOps, and AIOps into one operating discipline.',
   openGraph: {
-    title: 'Rafique Syed — AI-first Reliability & Platform Engineering Leader',
-    description: 'Helping engineering organizations move faster without losing reliability.',
-    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Rafique Syed — AI-first Reliability & Platform Engineering Leader' }],
+    title: 'Rafique Syed — Platform, Cloud & AI Engineering Leader',
+    description: 'Reliability, delivery, economics, and AI-driven operations—as one connected discipline.',
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Rafique Syed — Platform, Cloud & AI Engineering Leader' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rafique Syed — AI-first Reliability & Platform Engineering Leader',
-    description: 'Helping engineering organizations move faster without losing reliability.',
+    title: 'Rafique Syed — Platform, Cloud & AI Engineering Leader',
+    description: 'Reliability, delivery, economics, and AI-driven operations—as one connected discipline.',
     images: ['/og.png'],
   },
 };
