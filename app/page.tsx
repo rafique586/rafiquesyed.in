@@ -16,7 +16,7 @@ export default function Home() {
   return <main>
     <header className="site-header">
       <a className="brand" href="#top" aria-label="Rafique Syed, home"><span className="brand-mark">RS</span><span>Rafique Syed</span></a>
-      <nav aria-label="Main navigation"><a href="#about">About</a><a href="#approach">Approach</a><a href="#experience">Experience</a><a href="#writing">Thinking</a><a href="#beyond">Beyond</a></nav>
+      <nav aria-label="Main navigation"><a href="#about">About</a><a href="#perspective">Perspective</a><a href="#approach">Approach</a><a href="#experience">Experience</a><a href="#writing">Thinking</a><a href="#beyond">Beyond</a></nav>
       <a className="nav-cta" href="https://www.linkedin.com/in/rafiquesyed/" target="_blank" rel="noreferrer">Connect <span aria-hidden="true">↗</span></a>
     </header>
 
@@ -34,6 +34,15 @@ export default function Home() {
     <section className="about section" id="about">
       <div className="about-lead"><p className="kicker">ABOUT</p><h2>The titles changed.<br/><em>I stayed close to the problems.</em></h2></div>
       <div className="about-story"><p className="about-opening">I’ve spent 25 years working in technology. I started by building and running infrastructure inside regulated banks. Today, I lead platform engineering and cloud reliability for a large enterprise technology organization.</p><p>I lead a team of more than 100 engineers working across multi-cloud platforms. We deal with reliability, software delivery, cloud cost, and the growing role of AI in operations. These areas affect one another every day, so I do not treat them as separate jobs.</p><p>I still enjoy getting close to the actual problem. That might be an availability issue, an unexpected cloud bill, a slow delivery process, or an operational task that takes too much of an engineer’s time.</p><div className="current-focus"><span>WHAT I AM WORKING ON NOW</span><strong>Composite SLO and SLI models · Availability at scale · Useful AI agents for engineering operations</strong></div></div>
+    </section>
+
+    <section className="perspective section" id="perspective">
+      <div className="perspective-heading"><p className="kicker">WHAT SHAPED HOW I LEAD</p><h2>The technical work matters.<br/><em>So does the context.</em></h2></div>
+      <div className="perspective-grid">
+        <article><span>01</span><h3>Discipline from banking</h3><p>My early years at Deutsche Bank Asia Pacific and Credit Suisse First Boston taught me to respect controls, traceability, and the operational details behind every release.</p></article>
+        <article><span>02</span><h3>A global point of view</h3><p>I have worked with teams and stakeholders across India, Singapore, Japan, Finland, and the United States. It taught me to listen for context before offering a solution.</p></article>
+        <article><span>03</span><h3>Change happens through people</h3><p>Tools are only part of a transformation. Training, mentoring, clear ownership, and helping teams understand why a change matters have been part of my work from SCM to platform engineering.</p></article>
+      </div>
     </section>
 
     <section className="approach section" id="approach"><div className="section-heading"><p className="kicker">HOW I WORK</p><h2>Reliability, delivery,<br/><em>cost and AI.</em></h2></div>
