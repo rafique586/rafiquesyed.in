@@ -7,17 +7,17 @@ const serif = Instrument_Serif({ variable: '--font-serif', subsets: ['latin'], w
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://rafiquesyed.in'),
-  title: 'Rafique Syed — Platform, Cloud & AI Engineering Leader',
-  description: 'Technologist and engineering leader connecting platform engineering, cloud reliability, DevOps, FinOps, and AIOps into one operating discipline.',
+  title: 'Rafique Syed | Platform, Cloud & AI Engineering Leader',
+  description: 'Rafique Syed writes about platform engineering, cloud reliability, DevOps, FinOps, and the practical use of AI in engineering operations.',
   openGraph: {
-    title: 'Rafique Syed — Platform, Cloud & AI Engineering Leader',
-    description: 'Reliability, delivery, economics, and AI-driven operations—as one connected discipline.',
-    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Rafique Syed — Platform, Cloud & AI Engineering Leader' }],
+    title: 'Rafique Syed | Platform, Cloud & AI Engineering Leader',
+    description: 'Notes from 25 years working across software delivery, cloud platforms, reliability, cost, and engineering operations.',
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Rafique Syed, Platform, Cloud & AI Engineering Leader' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rafique Syed — Platform, Cloud & AI Engineering Leader',
-    description: 'Reliability, delivery, economics, and AI-driven operations—as one connected discipline.',
+    title: 'Rafique Syed | Platform, Cloud & AI Engineering Leader',
+    description: 'Notes from 25 years working across software delivery, cloud platforms, reliability, cost, and engineering operations.',
     images: ['/og.png'],
   },
 };
