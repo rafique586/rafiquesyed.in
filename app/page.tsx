@@ -44,8 +44,6 @@ export default function Home() {
       <div className="journey-list">{journey.map(([label,title,copy])=><article className="journey-step" key={label}><span>{label}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
     </section>
 
-    <section className="datagridz section"><div className="datagridz-mark"><span>DG</span><i>BUILDING</i></div><div className="datagridz-copy"><p className="kicker">A PROJECT CLOSE TO ME</p><h2>DataGridz</h2><p>I’m building DataGridz as a cloud transformation venture alongside my leadership role. It gives me a place to try ideas myself, learn from implementation, and stay connected to the practical details of the work.</p></div><div className="builder-note"><span>LEAD</span><i>↔</i><span>BUILD</span></div></section>
-
     <section className="writing section" id="writing"><div className="section-heading compact"><p className="kicker">FIELD NOTES</p><h2>Ideas for the<br/>next operating model.</h2><p>Essays and working notes on engineering leadership, AI, reliability, and the craft of building platforms.</p></div><div className="notes">{fieldNotes.map(([tag,title],i)=><article className="note" key={title}><span className="note-index">0{i+1}</span><div><p>{tag}</p><h3>{title}</h3><span className="coming">COMING SOON</span></div><span className="arrow">↗</span></article>)}</div></section>
 
     <section className="offbeat" id="beyond">
