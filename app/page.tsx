@@ -12,6 +12,65 @@ const journey = [
   ['04 · NOW', 'Reliability, platforms & AI', 'Today I connect that full lifecycle: SRE, platform engineering, cloud reliability, developer productivity, and pragmatic AI that helps teams understand and operate complex systems.'],
 ];
 
+const calmSystemsGuide = [
+  {
+    id: 'reliability',
+    number: '01',
+    title: 'Reliability',
+    principle: 'Move quickly, but never let velocity replace verification.',
+    copy: 'Reliability is not about writing perfect code. It is about finding problems before customers experience them and limiting the impact when something goes wrong. AI-generated changes should clear the same review, test, and SLO bar as human work.',
+    takeaway: 'Start by defining what reliable means for the customer, then let those signals influence release decisions.',
+  },
+  {
+    id: 'availability',
+    number: '02',
+    title: 'Availability',
+    principle: 'A service is available only when the customer can complete the task.',
+    copy: 'An external model in a critical journey brings its latency, limits, and outages with it. Plan for timeouts, controlled retries, and a simpler fallback that keeps the customer moving. Most importantly, practise recovery rather than only documenting it.',
+    takeaway: 'List the dependencies in one critical journey and decide what should happen when each becomes slow or unavailable.',
+  },
+  {
+    id: 'security',
+    number: '03',
+    title: 'Security',
+    principle: 'Trust should be earned through evidence, not assumed from a clean-looking answer.',
+    copy: 'AI-generated code can look convincing while carrying unsafe assumptions or excessive permissions. Give agents only the access needed for the task, keep that access easy to revoke, and require clear human approval for security-sensitive changes.',
+    takeaway: 'Review what every agent can read, change, and execute. Remove anything it does not genuinely need.',
+  },
+  {
+    id: 'scalability',
+    number: '04',
+    title: 'Scalability',
+    principle: 'An elegant demo is a starting point, not proof that the design will scale.',
+    copy: 'AI workloads can be bursty, and one feature may multiply model calls, searches, database requests, and background jobs. Test the whole customer journey under sudden demand and keep a human in the important architectural trade-offs.',
+    takeaway: 'Test for spikes and dependency limits, not only comfortable averages.',
+  },
+  {
+    id: 'sustainability',
+    number: '05',
+    title: 'Sustainability',
+    principle: 'A system should remain understandable and operable long after launch day.',
+    copy: 'AI can multiply weak engineering habits very quickly. Every new capability also creates ownership, maintenance, cost, and on-call responsibilities. If the team cannot explain who will operate and eventually retire it, the design is not complete.',
+    takeaway: 'Name the owner, operating model, and retirement path before adding another service.',
+  },
+  {
+    id: 'finops',
+    number: '06',
+    title: 'FinOps',
+    principle: 'Cost is an engineering signal, not an invoice to inspect later.',
+    copy: 'Tokens, model calls, and agent actions can create unfamiliar cost patterns. Engineers should understand the cost of a useful customer outcome while they can still improve the design. Cost belongs beside reliability, latency, security, and scale.',
+    takeaway: 'Measure cost per successful outcome, then make that information visible to the team building the feature.',
+  },
+  {
+    id: 'aiops',
+    number: '07',
+    title: 'AIOps',
+    principle: 'Let AI reduce the noise before asking it to take control.',
+    copy: 'AI is valuable when it groups alerts, explains an incident, spots unusual behaviour, or recommends the next step. For destructive or difficult-to-reverse actions, AI should propose and a person should approve until the system has earned greater trust.',
+    takeaway: 'Begin with AI as an observer and adviser. Expand its authority only when actions are bounded, visible, and reversible.',
+  },
+];
+
 export default function Home() {
   return <main>
     <header className="site-header">
@@ -26,10 +85,15 @@ export default function Home() {
         <p className="hero-intro">I’m Rafique. I work across platform engineering, cloud reliability, DevOps, FinOps, and AIOps. I see them as connected parts of the same engineering problem.</p>
         <div className="hero-actions"><a className="button primary" href="#approach">Explore my approach <span>↓</span></a><a className="text-link" href="https://www.linkedin.com/in/rafiquesyed/" target="_blank" rel="noreferrer">Start a conversation <span>↗</span></a></div>
       </div>
-      <div className="hero-art" aria-label="Calm systems supported by reliability, availability, security, scalability, sustainability, FinOps and AIOps"><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="core"><small>FOCUS</small><strong>Calm<br/>systems.</strong></div><span className="focus-label label-one">Reliability</span><span className="focus-label label-two">Availability</span><span className="focus-label label-three">Security</span><span className="focus-label label-four">Scalability</span><span className="focus-label label-five">Sustainability</span><span className="focus-label label-six">FinOps</span><span className="focus-label label-seven">AIOps</span></div>
+      <div className="hero-art" aria-label="Calm systems supported by reliability, availability, security, scalability, sustainability, FinOps and AIOps"><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="core"><small>FOCUS</small><strong>Calm<br/>systems.</strong></div><a className="focus-label label-one" href="#guide-reliability">Reliability</a><a className="focus-label label-two" href="#guide-availability">Availability</a><a className="focus-label label-three" href="#guide-security">Security</a><a className="focus-label label-four" href="#guide-scalability">Scalability</a><a className="focus-label label-five" href="#guide-sustainability">Sustainability</a><a className="focus-label label-six" href="#guide-finops">FinOps</a><a className="focus-label label-seven" href="#guide-aiops">AIOps</a></div>
     </section>
 
     <section className="signal-bar" aria-label="Areas of expertise"><span>PLATFORM ENGINEERING</span><i>✦</i><span>SRE</span><i>✦</i><span>DEVOPS</span><i>✦</i><span>FINOPS</span><i>✦</i><span>AIOPS</span></section>
+
+    <section className="calm-guide section" id="calm-systems">
+      <div className="calm-guide-intro"><p className="kicker">THE CALM SYSTEMS FIELD GUIDE</p><h2>Seven ideas.<br/><em>One operating discipline.</em></h2><p>AI changes the speed of engineering. It does not remove the need for sound engineering judgement. Here is how I connect the practices that help teams move fast without creating unnecessary surprises.</p></div>
+      <div className="calm-guide-list">{calmSystemsGuide.map(item => <article className="guide-entry" id={`guide-${item.id}`} key={item.id}><div className="guide-heading"><span>{item.number}</span><h3>{item.title}</h3></div><div className="guide-content"><strong>{item.principle}</strong><p>{item.copy}</p><p className="guide-takeaway"><span>TRY THIS</span>{item.takeaway}</p></div></article>)}</div>
+    </section>
 
     <section className="about section" id="about">
       <div className="about-lead"><p className="kicker">ABOUT</p><h2>The titles changed.<br/><em>I stayed close to the problems.</em></h2></div>
