@@ -1,9 +1,3 @@
-const chapters = [
-  ['01', 'Reliability', 'I work on SLOs, SLIs, availability models, observability, and incident practices that continue to work as systems and teams grow.'],
-  ['02', 'Delivery', 'I use CI/CD and platform engineering to shorten feedback loops and make it easier for teams to move quickly with the right controls in place.'],
-  ['03', 'Cost', 'For me, FinOps means giving engineering teams useful cost information, clear ownership, sensible forecasts, and the ability to make better design choices.'],
-  ['04', 'AI in operations', 'I am exploring where agents can help with CI/CD, observability, and incident response. The test is simple: does it save engineers time, and can we trust it in production?'],
-];
 const fieldNotes = [['SCM + AI', 'Software Configuration Management Still Matters'], ['Platform Engineering', 'Why internal platforms must earn trust'], ['Leadership', 'Reliability is an organizational capability']];
 const journey = [
   ['01 · FOUNDATIONS', 'SCM & the software lifecycle', 'Built depth in source control, branching, build engineering, release governance, and the discipline required to make software delivery repeatable.'],
@@ -75,7 +69,7 @@ export default function Home() {
   return <main>
     <header className="site-header">
       <a className="brand" href="#top" aria-label="Rafique Syed, home"><span className="brand-mark">RS</span><span>Rafique Syed</span></a>
-      <nav aria-label="Main navigation"><a href="#about">About</a><a href="#leadership">Leadership</a><a href="#approach">Approach</a><a href="#experience">Experience</a><a href="/writing">Writing</a><a href="#beyond">Beyond</a></nav>
+      <nav aria-label="Main navigation"><a href="#about">About</a><a href="#leadership">Leadership</a><a href="#calm-systems">Field Guide</a><a href="#experience">Experience</a><a href="/writing">Writing</a><a href="#beyond">Beyond</a></nav>
       <a className="nav-cta" href="https://www.linkedin.com/in/rafiquesyed/" target="_blank" rel="noreferrer">Connect <span aria-hidden="true">↗</span></a>
     </header>
 
@@ -83,7 +77,7 @@ export default function Home() {
       <div className="hero-copy"><p className="eyebrow"><span /> Bengaluru · India · Global</p>
         <h1>I build the systems behind <em>fast, reliable, cost-aware</em> engineering.</h1>
         <p className="hero-intro">I’m Rafique. I work across platform engineering, cloud reliability, DevOps, FinOps, and AIOps. I see them as connected parts of the same engineering problem.</p>
-        <div className="hero-actions"><a className="button primary" href="#approach">Explore my approach <span>↓</span></a><a className="text-link" href="https://www.linkedin.com/in/rafiquesyed/" target="_blank" rel="noreferrer">Start a conversation <span>↗</span></a></div>
+        <div className="hero-actions"><a className="button primary" href="#calm-systems">Explore the field guide <span>↓</span></a><a className="text-link" href="https://www.linkedin.com/in/rafiquesyed/" target="_blank" rel="noreferrer">Start a conversation <span>↗</span></a></div>
       </div>
       <div className="hero-art" aria-label="Calm systems supported by reliability, availability, security, scalability, sustainability, FinOps and AIOps"><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="core"><small>FOCUS</small><strong>Calm<br/>systems.</strong></div><a className="focus-label label-one" href="#guide-reliability">Reliability</a><a className="focus-label label-two" href="#guide-availability">Availability</a><a className="focus-label label-three" href="#guide-security">Security</a><a className="focus-label label-four" href="#guide-scalability">Scalability</a><a className="focus-label label-five" href="#guide-sustainability">Sustainability</a><a className="focus-label label-six" href="#guide-finops">FinOps</a><a className="focus-label label-seven" href="#guide-aiops">AIOps</a></div>
     </section>
@@ -113,10 +107,6 @@ export default function Home() {
     <section className="leadership section" id="leadership">
       <div className="leadership-heading"><p className="kicker light">LEADERSHIP PHILOSOPHY</p><h2>Build clarity.<br/>Create ownership.<br/><em>Stay close enough to help.</em></h2></div>
       <div className="leadership-copy"><p className="leadership-opening">I believe good leadership makes complex work feel more manageable. My role is to give teams a clear direction, create the conditions for people to take ownership, and remove the obstacles that slow them down.</p><p>I stay close enough to understand the real problems, without becoming the person who must solve everything. I encourage engineers to question assumptions, learn from failures, and make decisions with reliability, security, cost, and the customer in mind.</p><p>The goal is not to build teams that depend on a leader. It is to build teams that grow stronger, more confident, and more capable over time.</p><div className="leadership-principles"><span>CLARITY</span><i>✦</i><span>OWNERSHIP</span><i>✦</i><span>GROWTH</span></div></div>
-    </section>
-
-    <section className="approach section" id="approach"><div className="section-heading"><p className="kicker">HOW I WORK</p><h2>Reliability, delivery,<br/><em>cost and AI.</em></h2></div>
-      <div className="chapter-list">{chapters.map(([number,title,copy]) => <article className="chapter" key={number}><span>{number}</span><div><h3>{title}</h3><p>{copy}</p></div></article>)}</div>
     </section>
 
     <section className="experience section" id="experience"><div className="experience-story"><p className="kicker light">MY JOURNEY</p><h2>I’ve seen software delivery change from the inside.</h2><p>I started with configuration management, builds, and releases. Over time, the work expanded into CI/CD, cloud, platforms, reliability, cost, and AI. That history helps me understand how today’s problems are connected.</p><div className="operating-lens"><span>RELIABILITY</span><i>×</i><span>SPEED</span><i>×</i><span>COST</span><p>A technical decision is rarely about one thing. It usually affects how reliably we run, how quickly we deliver, and what the system costs.</p></div><p className="org-context">I have worked with ADP, Nokia, Microsoft, Jio, Deutsche Bank, Credit Suisse, and NetApp during my career.</p></div>
