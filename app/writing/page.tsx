@@ -36,6 +36,10 @@ export default function Writing() {
     </section>
 
     <section className="archive-list" aria-label="Writing in progress">
+      <a className="published-feature" href="/writing/software-configuration-management-still-matters">
+        <div><p className="archive-topic">SCM + AI · PUBLISHED SEPTEMBER 2026</p><h2>Software Configuration Management Still Matters</h2><p>The engineering discipline AI cannot automate away.</p></div>
+        <span>READ THE ARTICLE ↗</span>
+      </a>
       <div className="archive-list-heading"><p className="kicker">ON THE WORKBENCH</p><p>Ideas currently being developed</p></div>
       {notes.map((note, index) => <article className="archive-note" key={note.title}>
         <span className="archive-number">0{index + 1}</span>

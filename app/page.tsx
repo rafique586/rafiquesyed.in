@@ -4,7 +4,7 @@ const chapters = [
   ['03', 'Cost', 'For me, FinOps means giving engineering teams useful cost information, clear ownership, sensible forecasts, and the ability to make better design choices.'],
   ['04', 'AI in operations', 'I am exploring where agents can help with CI/CD, observability, and incident response. The test is simple: does it save engineers time, and can we trust it in production?'],
 ];
-const fieldNotes = [['AI + Operations', 'From noisy telemetry to useful decisions'], ['Platform Engineering', 'Why internal platforms must earn trust'], ['Leadership', 'Reliability is an organizational capability']];
+const fieldNotes = [['SCM + AI', 'Software Configuration Management Still Matters'], ['Platform Engineering', 'Why internal platforms must earn trust'], ['Leadership', 'Reliability is an organizational capability']];
 const journey = [
   ['01 · FOUNDATIONS', 'SCM & the software lifecycle', 'Built depth in source control, branching, build engineering, release governance, and the discipline required to make software delivery repeatable.'],
   ['02 · TRANSFORMATION', 'SDLC & CI/CD evangelism', 'Helped teams rethink how software moves from an idea to production. This included automation, continuous integration, delivery pipelines, and faster engineering feedback.'],
@@ -58,7 +58,7 @@ export default function Home() {
       <div className="journey-list">{journey.map(([label,title,copy])=><article className="journey-step" key={label}><span>{label}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
     </section>
 
-    <section className="writing section" id="writing"><div className="section-heading compact"><p className="kicker">FIELD NOTES</p><h2>A record of what<br/>I’m learning.</h2><p>Essays and working notes on engineering leadership, AI, reliability, and the craft of building platforms.</p><a className="archive-link" href="/writing">Explore the writing archive <span>↗</span></a></div><div className="notes">{fieldNotes.map(([tag,title],i)=><a className="note" href="/writing" key={title}><span className="note-index">0{i+1}</span><div><p>{tag}</p><h3>{title}</h3><span className="coming">IN PROGRESS</span></div><span className="arrow">↗</span></a>)}</div></section>
+    <section className="writing section" id="writing"><div className="section-heading compact"><p className="kicker">FIELD NOTES</p><h2>A record of what<br/>I’m learning.</h2><p>Essays and working notes on engineering leadership, AI, reliability, and the craft of building platforms.</p><a className="archive-link" href="/writing">Explore the writing archive <span>↗</span></a></div><div className="notes">{fieldNotes.map(([tag,title],i)=><a className="note" href={i===0?'/writing/software-configuration-management-still-matters':'/writing'} key={title}><span className="note-index">0{i+1}</span><div><p>{tag}</p><h3>{title}</h3><span className="coming">{i===0?'PUBLISHED':'IN PROGRESS'}</span></div><span className="arrow">↗</span></a>)}</div></section>
 
     <section className="offbeat" id="beyond">
       <div className="drum-art" aria-hidden="true"><div className="cymbal cymbal-one"/><div className="cymbal cymbal-two"/><div className="drum drum-one"/><div className="drum drum-two"/><div className="drum drum-three"/><span className="stick stick-one"/><span className="stick stick-two"/><div className="beat">1 · 2 · 3 · 4</div></div>
