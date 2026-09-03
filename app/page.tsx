@@ -32,8 +32,9 @@ export default function Home() {
     <section className="signal-bar" aria-label="Areas of expertise"><span>PLATFORM ENGINEERING</span><i>✦</i><span>SRE</span><i>✦</i><span>DEVOPS</span><i>✦</i><span>FINOPS</span><i>✦</i><span>AIOPS</span></section>
 
     <section className="about section" id="about">
-      <div className="about-lead"><p className="kicker">ABOUT</p><h2>The titles changed.<br/><em>I stayed close to the problems.</em></h2><figure className="about-portrait"><img src="/rafique-city-portrait.png" alt="Rafique Syed in a city setting at night"/><figcaption>Technology is global. Good engineering stays grounded in context.</figcaption></figure></div>
+      <div className="about-lead"><p className="kicker">ABOUT</p><h2>The titles changed.<br/><em>I stayed close to the problems.</em></h2></div>
       <div className="about-story"><p className="about-opening">I’ve spent more than two decades working in technology. I started by building and running continuous integration and continuous deployment systems inside regulated banks. Today, I lead platform engineering and cloud reliability for a large enterprise technology organization.</p><p>I have led large engineering teams working across multi-cloud platforms, DevOps, SRE, FinOps, and operations. The scope has changed over time, but the work has consistently been about helping people and systems operate well together.</p><p>I still enjoy getting close to the actual problem. That might be an availability issue, an unexpected cloud bill, a slow delivery process, or an operational task that takes too much of an engineer’s time.</p><div className="current-focus"><span>WHAT I AM WORKING ON NOW</span><strong>Composite SLO and SLI models · Availability at scale · Useful AI agents for engineering operations</strong></div></div>
+      <figure className="about-portrait"><img src="/rafique-city-portrait.png" alt="Rafique Syed in a city setting at night"/><figcaption>Technology is global. Good engineering stays grounded in context.</figcaption></figure>
     </section>
 
     <section className="perspective section" id="perspective">
@@ -65,6 +66,6 @@ export default function Home() {
       <div className="offbeat-copy"><p className="kicker light">OFF THE CLOCK · ON THE BEAT</p><h2>When I’m not deploying,<br/><em>I’m playing drums.</em></h2><p>Technology gives me systems. Music gives me rhythm. Behind the kit, I explore Indian rhythm, percussion, and the joy of making something together.</p><a className="instagram-link" href="https://www.instagram.com/explore/tags/taalchemy/" target="_blank" rel="noreferrer" aria-label="Explore Taalchemy on Instagram"><span>◎</span><div><small>FOLLOW THE RHYTHM ON INSTAGRAM</small><strong>#Taalchemy</strong></div><b>↗</b></a></div>
     </section>
 
-    <footer><div><p className="kicker light">LET’S COMPARE NOTES</p><h2>Working on similar problems?<br/><em>I’d like to hear what you’re seeing.</em></h2></div><div className="footer-links"><a href="https://www.linkedin.com/in/rafiquesyed/" target="_blank" rel="noreferrer">Start a conversation ↗</a><a href="#top">Back to top ↑</a></div><p className="copyright">© 2026 Rafique Syed <span>Platforms · Cloud · Reliability · AI</span></p></footer>
+    <footer><div><p className="kicker light">LET’S COMPARE NOTES</p><h2>Working on similar problems?<br/><em>I’d like to hear what you’re seeing.</em></h2></div><div className="footer-links"><a href="https://www.linkedin.com/in/rafiquesyed/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/rafique586" target="_blank" rel="noreferrer">GitHub ↗</a><a href="#top">Back to top ↑</a></div><p className="copyright">© 2026 Rafique Syed <span>Platforms · Cloud · Reliability · AI</span></p></footer>
   </main>;
 }

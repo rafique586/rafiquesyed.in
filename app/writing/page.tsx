@@ -54,6 +54,6 @@ export default function Writing() {
       <p>Nothing to list yet. I’d rather keep this honest and add longer work when it is genuinely useful and ready to share.</p>
     </section>
 
-    <footer className="archive-footer"><div><p className="kicker light">COMPARE NOTES</p><h2>Working on something similar?</h2></div><div className="footer-links"><a href="https://www.linkedin.com/in/rafiquesyed/" target="_blank" rel="noreferrer">Start a conversation ↗</a><a href="/">Return home ←</a></div></footer>
+    <footer className="archive-footer"><div><p className="kicker light">COMPARE NOTES</p><h2>Working on something similar?</h2></div><div className="footer-links"><a href="https://www.linkedin.com/in/rafiquesyed/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/rafique586" target="_blank" rel="noreferrer">GitHub ↗</a><a href="/">Return home ←</a></div></footer>
   </main>;
 }

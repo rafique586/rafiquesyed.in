@@ -66,8 +66,34 @@
 }
 
 .about-portrait {
-  margin-top: 38px;
-  max-width: 480px;
+  grid-area: portrait;
+  margin: 0;
+  max-width: none;
+  align-self: start;
+}
+
+.about {
+  grid-template-columns: minmax(270px, .72fr) minmax(0, 1.28fr);
+  grid-template-areas:
+    "lead story"
+    "portrait story";
+  column-gap: 7vw;
+  row-gap: 34px;
+  align-items: start;
+}
+
+.about-lead {
+  grid-area: lead;
+}
+
+.about-story {
+  grid-area: story;
+  max-width: 720px;
+}
+
+.about-portrait img {
+  aspect-ratio: 4 / 3;
+  object-position: center 56%;
 }
 
 .perspective-heading {
@@ -206,6 +232,12 @@ footer {
   font-size: clamp(38px, 4.5vw, 62px);
 }
 
+.article-next-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
 @media (max-width: 800px) {
   :root {
     --section-space: 68px;
@@ -224,6 +256,19 @@ footer {
 
   .article-visual {
     margin-bottom: 58px;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "lead"
+      "story"
+      "portrait";
+    row-gap: 34px;
+  }
+
+  .about-portrait {
+    max-width: 560px;
   }
 }
 
