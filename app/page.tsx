@@ -16,7 +16,7 @@ export default function Home() {
   return <main>
     <header className="site-header">
       <a className="brand" href="#top" aria-label="Rafique Syed, home"><span className="brand-mark">RS</span><span>Rafique Syed</span></a>
-      <nav aria-label="Main navigation"><a href="#about">About</a><a href="#perspective">Perspective</a><a href="#approach">Approach</a><a href="#experience">Experience</a><a href="/writing">Writing</a><a href="#beyond">Beyond</a></nav>
+      <nav aria-label="Main navigation"><a href="#about">About</a><a href="#leadership">Leadership</a><a href="#approach">Approach</a><a href="#experience">Experience</a><a href="/writing">Writing</a><a href="#beyond">Beyond</a></nav>
       <a className="nav-cta" href="https://www.linkedin.com/in/rafiquesyed/" target="_blank" rel="noreferrer">Connect <span aria-hidden="true">↗</span></a>
     </header>
 
@@ -43,6 +43,11 @@ export default function Home() {
         <article><span>02</span><h3>A global point of view</h3><p>I have worked with teams and stakeholders across India, Singapore, Japan, Finland, and the United States. It taught me to listen for context before offering a solution.</p></article>
         <article><span>03</span><h3>Change happens through people</h3><p>Tools are only part of a transformation. Training, mentoring, clear ownership, and helping teams understand why a change matters have been part of my work from SCM to platform engineering.</p></article>
       </div>
+    </section>
+
+    <section className="leadership section" id="leadership">
+      <div className="leadership-heading"><p className="kicker light">LEADERSHIP PHILOSOPHY</p><h2>Build clarity.<br/>Create ownership.<br/><em>Stay close enough to help.</em></h2></div>
+      <div className="leadership-copy"><p className="leadership-opening">I believe good leadership makes complex work feel more manageable. My role is to give teams a clear direction, create the conditions for people to take ownership, and remove the obstacles that slow them down.</p><p>I stay close enough to understand the real problems, without becoming the person who must solve everything. I encourage engineers to question assumptions, learn from failures, and make decisions with reliability, security, cost, and the customer in mind.</p><p>The goal is not to build teams that depend on a leader. It is to build teams that grow stronger, more confident, and more capable over time.</p><div className="leadership-principles"><span>CLARITY</span><i>✦</i><span>OWNERSHIP</span><i>✦</i><span>GROWTH</span></div></div>
     </section>
 
     <section className="approach section" id="approach"><div className="section-heading"><p className="kicker">HOW I WORK</p><h2>Reliability, delivery,<br/><em>cost and AI.</em></h2></div>
