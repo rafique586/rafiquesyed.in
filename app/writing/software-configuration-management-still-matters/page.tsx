@@ -24,7 +24,8 @@ export default function ScmArticle() {
         <p className="kicker">SCM + AI · FIELD NOTE 01</p>
         <h1>Software Configuration Management <em>Still Matters.</em></h1>
         <p className="article-dek">AI accelerates software change. SCM makes that change understandable, traceable, and reversible.</p>
-        <div className="article-byline"><span>By Rafique Syed</span><span>Published September 2026</span></div>
+        <div className="article-byline"><span>By Rafique Syed</span><span>Published September 2026</span><span>A field note from experience</span></div>
+        <p className="article-margin-note">The boring question is often the useful one.</p>
       </header>
 
       <div className="article-visual" aria-label="A dependable path from AI-generated change to safe recovery">
@@ -66,7 +67,7 @@ export default function ScmArticle() {
           <blockquote>Speed without memory is not agility. It is risk arriving faster.</blockquote>
           <p>AI increases the speed and volume of change. SCM provides the memory needed to manage it.</p>
 
-          <h2>What good looks like now</h2>
+          <h2>Five habits I still rely on</h2>
           <div className="practice-grid">
             <section><span>01</span><h3>Keep changes small</h3><p>Make generated work reviewable enough to understand and reverse.</p></section>
             <section><span>02</span><h3>Record intent</h3><p>Explain why a change exists, not only what the diff contains.</p></section>
@@ -80,6 +81,7 @@ export default function ScmArticle() {
           <p>That confidence does not come from the model. It comes from engineering discipline.</p>
           <p>So when an AI tool impresses you with how much it built in so little time, ask the boring question first:</p>
           <p className="article-ending">Can we undo it?</p>
+          <div className="article-signoff"><span>Rafique</span><p>I write these field notes to connect what engineering has taught us with what AI is changing now.</p></div>
         </div>
       </div>
     </article>
