@@ -1,0 +1,105 @@
+name: Review and publish articles
+
+on:
+  pull_request:
+    paths:
+      - 'content/articles/**'
+      - 'scripts/**'
+      - 'app/writing/**'
+      - 'app/article-overrides.css'
+      - '.github/workflows/publish-article.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: rafiquesyed-in-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  style-check:
+    name: 1 · Style and voice
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run articles:style
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: style-check
+          path: review-output/style-check.md
+
+  humanisation-check:
+    name: 2 · Humanisation
+    needs: style-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run articles:humanise
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: humanisation-check
+          path: review-output/humanisation-check.md
+
+  distribution-recommendations:
+    name: 3 · Distribution kit
+    needs: humanisation-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run articles:distribute
+      - uses: actions/upload-artifact@v4
+        with:
+          name: distribution-kit
+          path: review-output/distribution-kit.md
+
+  publish:
+    name: 4 · Publish to rafiquesyed.in
+    needs: distribution-recommendations
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build and validate
+        run: npm run build
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+      - name: Deploy to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v3
+        with:
+          service: rafique-syed-site
+          project_id: rafiquesyed
+          region: asia-southeast1
+          source: .
+          flags: --port=3000
+      - name: Verify the public site
+        run: curl --fail --show-error --silent --retry 6 --retry-delay 10 https://rafiquesyed.in/ > /dev/null

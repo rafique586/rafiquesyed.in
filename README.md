@@ -32,9 +32,20 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-## Publishing
+## Editorial and publishing workflow
 
-Pushing `main` starts `.github/workflows/deploy-cloud-run.yml`. It validates the site, builds the Docker container and deploys `rafique-syed-site` in Google Cloud project `rafiquesyed`.
+Pull requests run the first three stages. A merge or direct push to `main` runs all four in sequence:
+
+1. **Style and voice** compares sentence rhythm, personal perspective and article structure with the existing field notes.
+2. **Humanisation** flags generic AI phrases, likely passive constructions and overly long sentences. It is a writing-pattern review, not an unreliable claim that it can identify who wrote the text.
+3. **Distribution kit** produces suggested tags, a LinkedIn post and publication guidance as a downloadable workflow artifact and job summary.
+4. **Publish** validates the site, builds the Docker container, deploys `rafique-syed-site` to Google Cloud Run and checks the public URL.
+
+Run the first three stages locally with:
+
+```bash
+npm run articles:review
+```
 
 The workflow uses keyless Google Cloud authentication. Configure these GitHub repository variables once:
 

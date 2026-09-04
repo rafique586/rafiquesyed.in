@@ -12,7 +12,11 @@
     "build": "vinext build",
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "articles:generate": "node scripts/generate-articles.mjs"
+    "articles:generate": "node scripts/generate-articles.mjs",
+    "articles:style": "node scripts/style-check.mjs",
+    "articles:humanise": "node scripts/humanisation-check.mjs",
+    "articles:distribute": "node scripts/distribution-recommendations.mjs",
+    "articles:review": "npm run articles:style && npm run articles:humanise && npm run articles:distribute"
   },
   "dependencies": {
     "next": "16.2.6",
