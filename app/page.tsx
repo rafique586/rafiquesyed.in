@@ -1,5 +1,5 @@
 const fieldNotes = [
-  { tag: 'FINOPS + AI', title: 'Your Context Window Is a Budget', href: '/writing/context-window-is-a-budget', status: 'PUBLISHED' },
+  { tag: 'FINOPS + AI', title: "I Burned 120,000 Tokens I Didn't Need", href: '/writing/context-window-is-a-budget', status: 'PUBLISHED' },
   { tag: 'SCM + AI', title: 'Software Configuration Management Still Matters', href: '/writing/software-configuration-management-still-matters', status: 'PUBLISHED' },
   { tag: 'PLATFORM ENGINEERING', title: 'Why internal platforms must earn trust', href: '/writing', status: 'IN PROGRESS' },
 ];

@@ -1,26 +1,26 @@
 ---
-title: "Your Context Window Is a Budget"
-description: "What cloud cost engineering taught me about managing LLM context, with real numbers from a live session."
+title: "I Burned 120,000 Tokens I Didn't Need"
+description: "The real cost of one overloaded AI coding session, and the six habits that would have kept it focused."
 topic: "FINOPS + AI"
 date: "2026-09-04"
 displayDate: "Published September 2026"
 fieldNote: "FIELD NOTE 02"
-marginNote: "Available is not the same as valuable."
+marginNote: "The session looked healthy. The message history told a different story."
 visual: "context-ledger"
 draft: false
 ---
 
-In cloud engineering, we have a principle so obvious it took an entire discipline — FinOps — to make people actually follow it: **just because a resource is available doesn't mean you should consume it.**
+I burned about 120,000 tokens I did not need. The surprising part was that the session looked healthy.
 
-Teams spin up oversized EC2 instances "just in case." They leave S3 buckets unrestricted. They let Kubernetes nodes scale without limits. And then, at the end of the month, they stare at a bill they didn't expect.
+The context window was only 21% full. Nothing had failed, and there was plenty of space left. But when I looked at the breakdown, 170,700 tokens were sitting in message history. At a more focused level, closer to 48,000, the same work could have carried roughly 120,000 fewer tokens.
 
-I've watched the same pattern emerge in AI-assisted development. Developers open Claude Code, start building, and treat the context window like a free, infinite scratchpad. It isn't. And when it runs out — or degrades — the cost isn't on an invoice. It's in lost reasoning quality, forgotten decisions, and sessions that slowly become unreliable.
+I had seen this pattern before in cloud engineering. Teams provision capacity “just in case”, leave workloads running and discover the waste when the bill arrives. FinOps taught us to make usage visible, understand its value and spend deliberately.
 
-This post is about applying the same discipline we use in FinOps to something I'm calling **Tokenomics**: the intentional management of your LLM context budget.
+This time the bill was not from AWS, Azure or Google Cloud. It was inside my AI coding session.
 
-Here's the data from a real session of mine that triggered all of this thinking:
+Here is the actual readout that triggered this thinking:
 
-```
+```text
 Context Usage  ·  Sonnet 5  ·  claude-sonnet-5
 203.2k / 967k tokens (21%)
 
@@ -33,270 +33,167 @@ Estimated usage by category:
   Autocompact buffer:  33k tokens  (3.4%)
 ```
 
-21% used. Comfortable on the surface. But 170,000 tokens in conversation history — nearly the size of a small novel — for a single feature-building session. That number is where the story starts.
+This is a snapshot from my working session, not a universal benchmark. Model limits and category names will change, but the problem is easy to see.
 
----
+One feature-building session was carrying conversation history roughly the size of a small novel. That number is where this story starts.
 
-## What Is Tokenomics?
+## I call this Tokenomics
 
-Borrow the mental model from cloud FinOps for a moment.
+Tokenomics is the intentional management of an AI session’s context budget. It borrows a useful FinOps question:
 
-In FinOps, every resource has a cost. You don't just ask "does this work?" — you ask "does this work efficiently, and are we spending where it matters?" You distinguish between **reserved capacity** (fixed, unavoidable), **on-demand usage** (variable, controllable), and **waste** (neither necessary nor valuable).
+> Is this resource doing valuable work, or is it simply still running?
 
-**Tokenomics** applies this lens to your LLM context window:
+Some context is fixed overhead: the system prompt, essential tools and reserved capacity. Messages are different. They grow through our working habits: repeated explanations, pasted files, long exploratory threads and requirements being restated in full.
 
-| FinOps Concept | Tokenomics Equivalent |
-|---|---|
-| Reserved instances | System prompt + tool definitions (fixed overhead) |
-| On-demand compute | Active conversation messages (variable, your control) |
-| Idle resources | Repeated explanations, pasted file contents, stale context |
-| Reserved capacity buffer | Autocompact buffer (33k held back for compaction) |
-| Cost anomaly alert | Context crossing 60% → auto-compaction kicks in |
-| Rightsizing | CLAUDE.md replacing conversation history |
-| Tagging for attribution | Per-session context auditing with `/context` |
+The goal is not to use the fewest tokens. That would be like reducing a cloud bill by switching everything off. The goal is to spend context where it improves understanding, reasoning and verification.
 
-The context window is a **finite compute resource**. It has a hard ceiling (967k tokens in Sonnet 5). It has fixed costs you can't avoid. And it has variable costs that, left unmanaged, will balloon — just like an untagged cloud workload.
+## The gap was almost entirely conversation
 
----
+![Bar chart comparing actual context usage with a best-practice target. Messages account for nearly all of the gap, with 170.7k tokens used against a target of about 48k.](/images/articles/context-window/context-actual-vs-target.png)
 
-## Your Context Bill, Line by Line
+The fixed categories were not the real problem. System instructions, skills and the compaction buffer were mostly overhead I could not meaningfully change.
 
-Let's read that screenshot the way a FinOps engineer reads a cost breakdown.
+Messages were the opportunity. At roughly 5% of the window, the session would have carried about 48,000 message tokens instead of 170,700. That made approximately **120,000 tokens recoverable through better session hygiene**.
 
-### Fixed costs — non-negotiable overhead
+This is the number I would watch, not the size of the window. A large context window can hide poor habits for longer; it does not remove their cost.
 
-**System prompt: 8.8k (0.9%)**
-Claude Code's own operating instructions. You don't control this. It's the equivalent of your baseline EC2 instance cost — it's there whether you do anything or not.
+## What created the bloat
 
-**Skills: 2.9k (0.3%)**
-Your installed skills loaded at startup. Roughly analogous to reserved capacity you've pre-purchased. Manageable — don't install skills you don't use.
+![Breakdown of the behaviours that increased message context and the practices that would reduce it: durable project guidance, file references and compaction at feature boundaries.](/images/articles/context-window/context-drivers-and-fixes.png)
 
-**Autocompact buffer: 33k (3.4%)**
-This is reserved capacity held back deliberately. When the context hits ~60%, Claude Code uses this buffer to summarise and compress the conversation history. Think of it as your rollback budget — it's reserved so the compaction process itself doesn't run out of space to write the summary.
+The causes were ordinary:
 
-### Variable costs — where the opportunity is
+- I explained parts of the architecture again as the work changed direction.
+- File contents travelled in the conversation when a path would have been enough.
+- Exploratory threads stayed alive after their decisions had expired.
 
-**System tools: 20.8k (2.2%)**
-MCP tool schemas loaded into the context. Every connected tool definition costs tokens whether you use that tool or not. This is the LLM equivalent of a running service you forgot about — idle compute spending money. Load MCP tools on-demand, not upfront.
+The fixes are ordinary too. Keep durable knowledge in the repository, reference files by path and end or compact a session at a natural feature boundary.
 
-**Messages: 170.7k (17.7%)**
-This is the number that matters. This is your variable spend. In FinOps terms, this is your on-demand EC2 usage — entirely in your control, entirely driven by your behaviour. In a well-managed session, this should be a fraction of what I recorded. Instead, it was nearly 18% of the entire window.
+No clever prompt is required. This is operating discipline.
 
-What was in those 170k tokens? Mostly:
-- Re-explaining the project architecture at the start of sub-tasks
-- Pasting file contents into the conversation instead of referencing paths
-- Long exploratory threads where direction changed midway
-- Claude confirming my requirements back to me in full — my own words, doubled
+## How I would recover those 120,000 tokens
 
-**This is FinOps waste.** Not malicious. Not even visible while it's happening. But cumulative, and entirely preventable.
+The chart is useful only if it changes how we work. These are the six habits I would apply to the next session.
 
----
+### 1. Replace repeated conversation with project memory
 
-## The 60% Threshold: Your Cost Anomaly Alert
-
-In FinOps, you set budget alerts. When AWS spend crosses a threshold, you get notified before things spiral. Claude Code has an equivalent: **autocompaction at 60%**.
-
-When your context hits roughly 60% of the window, Claude Code automatically compresses older conversation history into a summary to free up space. This is Claude trying to keep your session alive — and it mostly works.
-
-But here's what the FinOps analogy reveals: **by the time your budget alert fires, you've already spent the money.** The compaction is a recovery mechanism, not a prevention mechanism. And recovery has costs:
-
-- The exact wording of architectural decisions gets rounded off
-- Nuanced reasoning from earlier in the session gets summarised into bullet points
-- Specific constraints you mentioned ("don't use this library," "this API has a quirk") may survive only as paraphrases
-- Claude's responses start to feel slightly less precise — subtly, then noticeably
-
-The goal in FinOps isn't to respond to cost alerts. It's to never trigger them in the first place. Same principle applies here.
-
----
-
-## Tokenomics in Practice: The FinOps Playbook, Translated
-
-### 1. Rightsizing: Replace conversation with CLAUDE.md
-
-In cloud rightsizing, you replace an oversized general-purpose instance with a smaller, purpose-built one. In Tokenomics, you replace repeated conversational context with a single, purpose-built project file.
-
-`CLAUDE.md` sits in your system prompt tier — loaded fresh every session at roughly 1–2k tokens. Compare that to 170k tokens of conversation history carrying the same information, accumulated over one session.
+Do not explain the architecture again every time the task changes. Keep a short project guide in the repository and let each session start from it.
 
 ```markdown
-# Project: [Your product name]
-## What this is
-## Tech stack and folder structure
-## Decisions already made (don't revisit)
-## What's built
-## Current task context
-## Known constraints and gotchas
+# Project
+## What this system does
+## Technology and important folders
+## Decisions already made. Do not revisit
+## Constraints and known surprises
+## What is working now
+## Current task and next step
 ```
 
-Every piece of project context in `CLAUDE.md` costs approximately **nothing** per session compared to rebuilding it in conversation. This is the single highest-ROI Tokenomics action.
+Keep it short. This is not another documentation project. It is the minimum project information a new engineer or a new AI session needs before touching the system.
 
-### 2. Reserved vs on-demand: Classify your context deliberately
+**Fixes:** re-explaining architecture and losing settled decisions.
 
-Not all context has the same value-per-token. Start thinking about your context the way a FinOps team thinks about compute purchasing:
+### 2. Point to files instead of carrying copies
 
-**High value — load once, reference many times:**
-- Architecture decisions → CLAUDE.md
-- Tech stack and conventions → CLAUDE.md
-- File structure → CLAUDE.md
+If the assistant can read the repository, say:
 
-**Medium value — per-feature context that expires:**
-- Current task description → CLAUDE.md current task section, updated per session
-- Active file being worked on → referenced by path, not pasted
-
-**Low value — pure waste:**
-- Restating what you already told Claude three messages ago
-- Pasting file contents when a path reference works
-- Letting Claude recap your requirements before every response
-
-Audit your session the way you'd audit a cloud bill. Ask: does this token have a job, or is it just taking up space?
-
-### 3. FinOps tagging: Audit with /context
-
-You can't optimise what you can't measure. FinOps teams tag every resource so they can attribute cost to a team, a service, or a feature. The Claude Code equivalent is running `/context` regularly during a session.
-
+```text
+Review app/writing/page.tsx and change only the article-card layout.
 ```
+
+Do not paste the full file unless access is unavailable or a small fragment needs focused discussion. Once a pasted copy and the real file diverge, the conversation starts reasoning about yesterday’s state.
+
+**Fixes:** duplicated content, stale context and unnecessarily large messages.
+
+### 3. Check the context bill at transitions
+
+In tools that expose a context report, check it after exploration, after completing a feature and before opening a different line of work. For Claude Code, that check is:
+
+```text
 /context
 ```
 
-Make this a habit at natural transitions — after finishing a feature, before starting a new thread, when something feels slow. Watch the Messages line. If it's climbing faster than your output is growing, you have a waste problem.
+Do not chase a universal “healthy percentage”. Ask a more useful question: **is message history growing faster than the useful output?** In my session, the 17.7% message share mattered more than the 21% total.
 
-A useful mental benchmark from the screenshot data:
+**Fixes:** waste remaining invisible until the session becomes unreliable.
 
-| Category | Healthy target | My actual | Delta |
-|---|---|---|---|
-| Messages | ≤ 5% of window | 17.7% | +12.7% |
-| System tools | ≤ 1% | 2.2% | +1.2% |
-| Skills | ≤ 0.5% | 0.3% | — |
+### 4. Compact when the work changes phase
 
-The messages delta represents roughly **120,000 tokens of recoverable waste** — context that could have lived in `CLAUDE.md` instead of conversation history.
+Compaction is most useful at a natural boundary: the investigation is complete, an architectural decision is settled or one feature is verified.
 
-### 4. Auto-scaling with guardrails: Use /compact proactively
+Before compacting, preserve four things:
 
-In cloud infrastructure, auto-scaling is good — but auto-scaling without limits is how you end up with a surprise bill. You set a maximum. You set a scaling policy.
+1. The decision and why it was made
+2. The files or interfaces that changed
+3. The evidence that the change works
+4. The next unresolved action
 
-`/compact` in Claude Code is your manual scaling control. Use it before the auto-compaction fires — at natural feature boundaries, after exploratory threads, before switching context.
+Then use the product’s compaction option. In Claude Code, for example, use `/compact`. Compaction should remove expired discussion without removing the engineering trail.
 
-```json
-{ "autoCompact": true }
+**Fixes:** long exploratory threads travelling into unrelated implementation work.
+
+### 5. Close with a handover that survives the chat
+
+At the end of meaningful work, ask for a short handover and save the reviewed result in the repository:
+
+```text
+Create a concise handover covering:
+1. What changed and which files were touched
+2. Decisions that are now settled
+3. What was tested or verified
+4. Constraints and surprises discovered
+5. The exact next step
 ```
 
-You can also enable auto-compact in `~/.claude/settings.json`. The autocompact buffer (33k in the screenshot) is pre-reserved for exactly this: it's the headroom the compaction process needs to write its summary without running out of space mid-operation. Think of it as your minimum reserved capacity — you can't dip below it.
+Do not copy the answer blindly. Correct it, remove speculation and commit it with the code. The next session should recover from the repository, not from a heroic attempt to remember an old conversation.
 
-### 5. Session boundaries as billing periods
+**Fixes:** lost reasoning, repeated discovery and poor session restarts.
 
-In FinOps, the billing period creates a forcing function for accountability. At the end of the month, you look at what you spent and why.
+### 6. Load only the tools the task needs
 
-In Tokenomics, the **session boundary** is your billing period. End it intentionally. Before closing any significant session, run this prompt:
+Tool definitions also consume context. A writing task does not need database schemas; a CSS change does not need every infrastructure integration. Where the product supports selective or on-demand tools, keep the active set relevant to the task.
 
-```
-Summarise this session into a CLAUDE.md update:
-1. What we built and which files were created or modified
-2. Architectural decisions made and the reasoning behind them
-3. APIs, schemas, or contracts now fixed and shouldn't change
-4. Constraints and gotchas discovered
-5. Immediate next steps when we resume
-```
+Do not optimise fixed overhead obsessively. In my numbers, tools were a smaller opportunity than messages. Start with the largest bar first.
 
-Paste it into `CLAUDE.md`. Commit it alongside your code. The next session starts with full project intelligence at 1–2k tokens, not 170k.
+**Fixes:** avoidable tool overhead without distracting from the real problem.
 
-**One feature. One session. One CLAUDE.md update.** That's your billing cycle.
+## A ten-minute reset for an overloaded session
 
-### 6. Load on-demand: Stop paying for idle MCP tools
+If a session already feels heavy, I would do this:
 
-The 20.8k tokens in system tools represents MCP schemas loaded upfront — tool definitions for tools you may never call in this session. In cloud terms, this is a running service generating cost while idle.
+1. Stop adding new requirements.
+2. Record the current decision, changed files, verification and next action.
+3. Move durable facts into the project guide.
+4. Remove pasted material that the repository already holds.
+5. Compact, or begin a clean session when the work has genuinely changed.
+6. Give the new session one focused objective and file references.
 
-```json
-{
-  "mcpServers": {
-    "your-server": {
-      "loadOnDemand": true
-    }
-  }
-}
-```
+That is Tokenomics in practice: visibility, ownership, rightsizing and a clean billing boundary. Here, we apply them to context rather than cloud spend.
 
-Load MCP tools when the task needs them. A frontend session doesn't need your database introspection schema consuming context.
+**One feature. One focused session. One durable handover.**
 
----
+Not using Claude Code? The names and controls change, but the discipline does not. I have put the equivalent workflow for ChatGPT, Cursor, GitHub Copilot and Gemini Code Assist into a separate visual guide: [How to manage context across AI coding tools](/writing/context-budget-across-ai-coding-tools).
 
-## The Token Economy of a Well-Managed Session
+## Crawl, walk, run
 
-Here's what a Tokenomics-optimised session looks like, compared to my actual session:
+You do not need a large governance programme to begin.
 
-| Category | My session | Optimised session | Saving |
-|---|---|---|---|
-| System prompt | 8.8k (fixed) | 8.8k (fixed) | — |
-| System tools | 20.8k | ~10k (on-demand) | ~10k |
-| Skills | 2.9k | 2.9k | — |
-| Messages | 170.7k | ~20–40k | ~130–150k |
-| Autocompact buffer | 33k (reserved) | 33k (reserved) | — |
-| **Total used** | **203.2k (21%)** | **~75k (7–8%)** | **~130k** |
+| Stage | Useful habit |
+|---|---|
+| Crawl | Look at context usage once per session and identify the largest category. |
+| Walk | Maintain project guidance, reference files and compact at feature boundaries. |
+| Run | Make session hygiene part of the team’s normal engineering workflow. |
 
-That ~130k token saving isn't theoretical. It's repeatable, session after session, compounding. At scale — multiple developers, multiple sessions per day — this is the difference between a team that runs comfortably within context limits and one that routinely hits degraded sessions and wonders why Claude "forgot" things.
+Most teams are probably at Crawl without naming it. Getting to Walk already creates value.
 
----
+## The budget mindset
 
-## Why This Matters Beyond Productivity
+Waste is often a symptom of a missing operating model. Cloud waste grows when nobody owns visibility or design trade-offs. Context waste grows when a team has no shared way to preserve decisions and close a line of exploration.
 
-There's a harder reason to care about Tokenomics, and it's one FinOps practitioners will recognise immediately.
+The engineers who work well with AI tools will not only write better prompts. They will build a dependable system around the collaboration: clear guidance, focused tasks, intentional boundaries and evidence that survives outside the conversation.
 
-**Waste is a symptom of a missing mental model.**
+I do not need a bigger context window to solve this problem. I need a cleaner session, fewer repeated explanations and a better handover.
 
-When a cloud bill is high, it's rarely because someone made one bad decision. It's because there was no shared framework for thinking about resource cost. No tagging strategy. No rightsizing reviews. No one person accountable for the bill.
+That is the connection to FinOps. It is not about being miserly. It is about knowing what deserves the budget, and being honest about what I burned without getting value back.
 
-The same dynamic is emerging in AI-assisted development. Teams are adopting Claude Code, GitHub Copilot, Cursor — powerful tools, all consuming context, all with limits. The developers getting the most out of these tools aren't the ones who write the cleverest prompts. They're the ones who've built a **system around their AI collaboration**.
-
-That system is Tokenomics:
-- CLAUDE.md as your project's persistent memory
-- Session boundaries as intentional billing periods
-- `/context` as your cost monitoring dashboard
-- `/compact` as your manual rightsizing lever
-- File path references instead of inline pasting
-
-It takes maybe five minutes at the end of each session to maintain. The payoff is sessions that start fast, stay coherent, and don't silently degrade because a compaction summary lost the nuance of a decision you made three hours ago.
-
----
-
-## The FinOps Maturity Model, Applied to Tokenomics
-
-FinOps defines a maturity model: Crawl → Walk → Run. Here's what that looks like for LLM context management:
-
-**Crawl — basic visibility**
-- Run `/context` at least once per session
-- Know your token breakdown before the session ends
-- Identify your biggest cost category (usually messages)
-
-**Walk — active management**
-- Maintain a `CLAUDE.md` for every active project
-- Run end-of-session summaries and commit them
-- Load MCP tools on-demand
-- Run `/compact` at feature boundaries
-
-**Run — systematic optimisation**
-- One feature per session, always
-- CLAUDE.md updated every session as part of your git commit
-- Regular `/context` audits mid-session
-- Sub-agents for isolated tasks (each gets its own context window)
-- Context usage tracked as a team metric alongside code quality
-
-Most teams are at Crawl without knowing it. The goal of this post is to get you to Walk. Run comes with practice.
-
----
-
-## Closing: The Budget Mindset
-
-Every token in your context window is a unit of compute. Some tokens are doing real work — carrying decisions, holding file state, enabling reasoning. Others are just there because no one told them to leave.
-
-The context window is not a scratchpad. It's a budget. And like any budget, the teams that manage it intentionally will consistently outperform those that don't — not because they have better AI tools, but because they've built the operational discipline to use them well.
-
-That discipline has a name in cloud engineering: FinOps. In LLM development, we're just starting to need it.
-
-I'm calling it Tokenomics. The playbook is the same.
-
----
-
-*Rafique Syed is a Director of SRE and Platform Engineering with 25 years across cloud platforms, regulated financial institutions, and AI tooling. He is the founder of [DataGridz](https://datagridz.com), a cloud transformation venture, and writes about platform engineering, AI-assisted development, and building in public at [rafiquesyed.in](https://rafiquesyed.in).*
-
----
-
-*Tags: Tokenomics, FinOps, Claude Code, LLM engineering, AI-assisted development, context window, platform engineering, developer productivity, cloud cost management*
-
+**The next 120,000 tokens are mine to save.**

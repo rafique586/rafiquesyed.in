@@ -10,7 +10,7 @@ let failures = 0;
 
 for (const article of articles) {
   const headings = [...article.body.matchAll(/^##\s+(.+)$/gm)].map((match) => match[1]);
-  const paragraphs = article.body.split(/\n\s*\n/).filter((block) => !block.startsWith('#') && !block.startsWith('>') && !/^\d+\./.test(block));
+  const paragraphs = article.body.split(/\n\s*\n/).filter((block) => !block.startsWith('#') && !block.startsWith('>') && !block.startsWith('|') && !/^\d+\./.test(block));
   const opening = paragraphs[0] || '';
   const closing = paragraphs.at(-1) || '';
   const articleText = plainText(article.body);

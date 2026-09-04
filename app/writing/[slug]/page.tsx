@@ -49,6 +49,17 @@ export default async function MarkdownArticle({ params }: ArticlePageProps) {
         <div className="ledger-chart"><div className="ledger-bar" aria-hidden="true"><i className="ledger-system"/><i className="ledger-tools"/><i className="ledger-skills"/><i className="ledger-messages"/><i className="ledger-free"/></div><div className="ledger-legend"><span><i className="key-system"/>System 0.9%</span><span><i className="key-tools"/>Tools 2.2%</span><span><i className="key-skills"/>Skills 0.3%</span><span><i className="key-messages"/>Messages 17.7%</span><span><i className="key-free"/>Remaining capacity</span></div></div>
       </div>}
 
+      {article.visual === 'tool-context-map' && <div className="tool-context-map" aria-label="Context-management workflow across five AI coding tools">
+        <div className="tool-map-heading"><p>ONE DISCIPLINE</p><strong>Memory → Focus → Boundary</strong><span>Applied across five tools</span></div>
+        <div className="tool-map-grid">
+          <section><span>CLAUDE CODE</span><b>CLAUDE.md</b><p>Files by path</p><em>/context · /compact</em></section>
+          <section><span>CHATGPT / CODEX</span><b>Projects + AGENTS.md</b><p>Useful sources · repo files</p><em>One outcome per task</em></section>
+          <section><span>CURSOR</span><b>.cursor/rules</b><p>@file · @folder · @code</p><em>Summarise or start fresh</em></section>
+          <section><span>GITHUB COPILOT</span><b>copilot-instructions.md</b><p>Relevant files · prompt files</p><em>Record, then new chat</em></section>
+          <section><span>GEMINI CODE ASSIST</span><b>Rules + repository docs</b><p>Context Drawer · @files</p><em>Remove context · new chat</em></section>
+        </div>
+      </div>}
+
       <div className="article-layout">
         <aside className="article-aside"><p>FIELD NOTE</p><strong>{article.description}</strong></aside>
         <div className="article-body markdown-body" dangerouslySetInnerHTML={{ __html: markdownToHtml(article.body) }}/>

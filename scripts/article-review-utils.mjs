@@ -36,7 +36,13 @@ export async function loadLegacyVoice() {
   ];
   const passages = [];
   for (const file of files) {
-    const source = await readFile(path.join(root, file), 'utf8');
+    let source;
+    try {
+      source = await readFile(path.join(root, file), 'utf8');
+    } catch (error) {
+      if (error?.code === 'ENOENT') continue;
+      throw error;
+    }
     for (const match of source.matchAll(/<p(?:\s[^>]*)?>([\s\S]*?)<\/p>/g)) {
       passages.push(match[1].replace(/<[^>]+>/g, ' ').replace(/[{}]/g, ' '));
     }

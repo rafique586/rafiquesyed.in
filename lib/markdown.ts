@@ -81,6 +81,14 @@ export function markdownToHtml(markdown: string) {
       continue;
     }
 
+    const articleImage = line.match(/^!\[([^\]]*)\]\((\/[^\s)]+)\)$/);
+    if (articleImage) {
+      flushParagraph();
+      closeList();
+      output.push(`<figure class="article-figure"><img src="${articleImage[2]}" alt="${escapeHtml(articleImage[1])}" loading="lazy"></figure>`);
+      continue;
+    }
+
     const unordered = line.match(/^[-*]\s+(.+)$/);
     const ordered = line.match(/^\d+\.\s+(.+)$/);
     if (unordered || ordered) {
