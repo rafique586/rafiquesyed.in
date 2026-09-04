@@ -1,4 +1,8 @@
-const fieldNotes = [['SCM + AI', 'Software Configuration Management Still Matters'], ['Platform Engineering', 'Why internal platforms must earn trust'], ['Leadership', 'Reliability is an organizational capability']];
+const fieldNotes = [
+  { tag: 'FINOPS + AI', title: 'Your Context Window Is a Budget', href: '/writing/context-window-is-a-budget', status: 'PUBLISHED' },
+  { tag: 'SCM + AI', title: 'Software Configuration Management Still Matters', href: '/writing/software-configuration-management-still-matters', status: 'PUBLISHED' },
+  { tag: 'PLATFORM ENGINEERING', title: 'Why internal platforms must earn trust', href: '/writing', status: 'IN PROGRESS' },
+];
 const journey = [
   ['01 · FOUNDATIONS', 'SCM & the software lifecycle', 'Built depth in source control, branching, build engineering, release governance, and the discipline required to make software delivery repeatable.'],
   ['02 · TRANSFORMATION', 'SDLC & CI/CD evangelism', 'Helped teams rethink how software moves from an idea to production. This included automation, continuous integration, delivery pipelines, and faster engineering feedback.'],
@@ -113,7 +117,7 @@ export default function Home() {
       <div className="journey-list">{journey.map(([label,title,copy])=><article className="journey-step" key={label}><span>{label}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
     </section>
 
-    <section className="writing section" id="writing"><div className="section-heading compact"><p className="kicker">FIELD NOTES</p><h2>A record of what<br/>I’m learning.</h2><p>Essays and working notes on engineering leadership, AI, reliability, and the craft of building platforms.</p><a className="archive-link" href="/writing">Explore the writing archive <span>↗</span></a></div><div className="notes">{fieldNotes.map(([tag,title],i)=><a className="note" href={i===0?'/writing/software-configuration-management-still-matters':'/writing'} key={title}><span className="note-index">0{i+1}</span><div><p>{tag}</p><h3>{title}</h3><span className="coming">{i===0?'PUBLISHED':'IN PROGRESS'}</span></div><span className="arrow">↗</span></a>)}</div></section>
+    <section className="writing section" id="writing"><div className="section-heading compact"><p className="kicker">FIELD NOTES</p><h2>A record of what<br/>I’m learning.</h2><p>Essays and working notes on engineering leadership, AI, reliability, and the craft of building platforms.</p><a className="archive-link" href="/writing">Explore the writing archive <span>↗</span></a></div><div className="notes">{fieldNotes.map((note,i)=><a className="note" href={note.href} key={note.title}><span className="note-index">0{i+1}</span><div><p>{note.tag}</p><h3>{note.title}</h3><span className="coming">{note.status}</span></div><span className="arrow">↗</span></a>)}</div></section>
 
     <section className="offbeat" id="beyond">
       <div className="drum-art" aria-hidden="true"><div className="cymbal cymbal-one"/><div className="cymbal cymbal-two"/><div className="drum drum-one"/><div className="drum drum-two"/><div className="drum drum-three"/><span className="stick stick-one"/><span className="stick stick-two"/><div className="beat">1 · 2 · 3 · 4</div></div>

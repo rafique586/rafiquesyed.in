@@ -240,6 +240,91 @@
   margin-bottom: 64px;
 }
 
+.published-feature + .published-feature {
+  margin-top: -40px;
+}
+
+.tokenomics-feature {
+  background: var(--orange);
+}
+
+.tokenomics-feature .archive-topic,
+.tokenomics-feature > span {
+  color: var(--lime) !important;
+}
+
+.context-ledger {
+  max-width: 1240px;
+  margin: 0 auto 82px;
+  padding: 34px 4%;
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 45px;
+  align-items: center;
+  background: #ece9dd;
+}
+
+.ledger-heading p {
+  margin-bottom: 10px;
+  color: var(--orange);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .17em;
+}
+
+.ledger-heading strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 38px;
+  font-weight: 400;
+}
+
+.ledger-heading span {
+  color: #66736b;
+  font-size: 13px;
+}
+
+.ledger-bar {
+  height: 20px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #d6d4ca;
+}
+
+.ledger-bar i { display: block; }
+.ledger-system { width: .9%; background: #9aa69e; }
+.ledger-tools { width: 2.2%; background: #6e8175; }
+.ledger-skills { width: .3%; min-width: 3px; background: var(--lime); }
+.ledger-messages { width: 17.7%; background: var(--orange); }
+.ledger-free { flex: 1; background: #d6d4ca; }
+
+.ledger-legend {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  color: #68746d;
+  font-size: 10px;
+  letter-spacing: .04em;
+}
+
+.ledger-legend span { display: flex; align-items: center; gap: 6px; }
+.ledger-legend i { width: 7px; height: 7px; border-radius: 50%; }
+.key-system { background: #9aa69e; }
+.key-tools { background: #6e8175; }
+.key-skills { background: var(--lime); }
+.key-messages { background: var(--orange); }
+.key-free { background: #d6d4ca; border: 1px solid #aaa; }
+
+.article-body code {
+  padding: 2px 5px;
+  border-radius: 3px;
+  background: #ece9dd;
+  color: var(--ink);
+  font-size: .88em;
+}
+
 .offbeat {
   min-height: 590px;
   padding-top: 88px;
@@ -378,6 +463,13 @@ footer {
 
   .article-visual {
     margin-bottom: 58px;
+  }
+
+  .context-ledger {
+    margin-bottom: 58px;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 28px 6%;
   }
 
   .about {

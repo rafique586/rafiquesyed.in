@@ -35,7 +35,11 @@ export default function Writing() {
       <p>I’m building this as a record of what I learn while working across platforms, cloud, reliability, delivery, cost, and AI. Some ideas will become essays. Others may remain shorter field notes. I’ll publish them when they are ready.</p>
     </section>
 
-    <section className="archive-list" aria-label="Writing in progress">
+    <section className="archive-list" aria-label="Published writing and work in progress">
+      <a className="published-feature tokenomics-feature" href="/writing/context-window-is-a-budget">
+        <div><p className="archive-topic">FINOPS + AI · PUBLISHED SEPTEMBER 2026</p><h2>Your Context Window Is a Budget</h2><p>What cloud cost engineering taught me about preserving useful AI context.</p></div>
+        <span>READ THE ARTICLE ↗</span>
+      </a>
       <a className="published-feature" href="/writing/software-configuration-management-still-matters">
         <div><p className="archive-topic">SCM + AI · PUBLISHED SEPTEMBER 2026</p><h2>Software Configuration Management Still Matters</h2><p>The engineering discipline AI cannot automate away.</p></div>
         <span>READ THE ARTICLE ↗</span>
