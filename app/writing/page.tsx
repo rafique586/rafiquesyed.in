@@ -1,3 +1,5 @@
+import { generatedArticles } from '../../lib/generated-articles';
+
 const notes = [
   {
     topic: 'AI + Operations',
@@ -36,6 +38,10 @@ export default function Writing() {
     </section>
 
     <section className="archive-list" aria-label="Published writing and work in progress">
+      {generatedArticles.map((article) => <a className="published-feature markdown-feature" href={`/writing/${article.slug}`} key={article.slug}>
+        <div><p className="archive-topic">{article.topic} · {article.displayDate.toUpperCase()}</p><h2>{article.title}</h2><p>{article.description}</p></div>
+        <span>READ THE ARTICLE ↗</span>
+      </a>)}
       <a className="published-feature tokenomics-feature" href="/writing/context-window-is-a-budget">
         <div><p className="archive-topic">FINOPS + AI · PUBLISHED SEPTEMBER 2026</p><h2>Your Context Window Is a Budget</h2><p>What cloud cost engineering taught me about preserving useful AI context.</p></div>
         <span>READ THE ARTICLE ↗</span>

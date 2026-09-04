@@ -325,6 +325,38 @@
   font-size: .88em;
 }
 
+.markdown-body pre {
+  margin: 28px 0;
+  padding: 20px;
+  overflow-x: auto;
+  border-radius: 4px;
+  background: var(--ink);
+  color: #f7f5ee;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.markdown-body pre code {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.markdown-body hr {
+  margin: 44px 0;
+  border: 0;
+  border-top: 1px solid #d5d1c5;
+}
+
+.markdown-feature {
+  background: var(--ink);
+}
+
+.markdown-feature .archive-topic,
+.markdown-feature > span {
+  color: var(--lime) !important;
+}
+
 .offbeat {
   min-height: 590px;
   padding-top: 88px;

@@ -6,10 +6,13 @@
     "node": ">=22.13.0"
   },
   "scripts": {
+    "predev": "node scripts/generate-articles.mjs",
     "dev": "vinext dev",
+    "prebuild": "node scripts/generate-articles.mjs",
     "build": "vinext build",
     "start": "vinext start",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "articles:generate": "node scripts/generate-articles.mjs"
   },
   "dependencies": {
     "next": "16.2.6",

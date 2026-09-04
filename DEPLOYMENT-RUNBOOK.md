@@ -62,11 +62,13 @@ The active account must be allowed to deploy Cloud Run services and use the Goog
 
 ### 1. Confirm the article is connected to the site
 
-For a new article, check all three locations:
+For a standard new article:
 
-- Article page: `app/writing/<article-slug>/page.tsx`
-- Writing index: `app/writing/page.tsx`
-- Homepage field note, when featured: `app/page.tsx`
+1. Copy `content/articles/_template.md` to a lowercase, hyphenated filename.
+2. Write the article and keep `draft: true` until it is ready.
+3. Change the front-matter value to `draft: false` to publish it.
+
+The build generates the article route and writing-archive entry automatically. No page code needs to be updated. The two original articles remain handcrafted pages because they use custom visual layouts.
 
 Use a lowercase, hyphenated URL slug, for example:
 
@@ -111,11 +113,19 @@ Open `http://localhost:3000` and inspect the homepage, writing index, article pa
 ### 4. Record the release in Git
 
 ```bash
-git add app
+git add content/articles
 git commit -m "Publish <article title>"
 ```
 
 If the release includes assets or other files, add those exact paths as well. Review `git status --short` before continuing.
+
+When GitHub Actions is configured, pushing the commit to `main` performs the remaining deployment and verification steps automatically:
+
+```bash
+git push github main
+```
+
+Use the manual deployment procedure below when the workflow is not yet configured or when an operator-controlled release is preferred.
 
 ### 5. Deploy the Docker container
 
