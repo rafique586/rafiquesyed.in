@@ -44,6 +44,11 @@ export default async function MarkdownArticle({ params }: ArticlePageProps) {
         {article.marginNote && <p className="article-margin-note">{article.marginNote}</p>}
       </header>
 
+      {article.visual === 'context-ledger' && <div className="context-ledger" aria-label="Context usage from one working session">
+        <div className="ledger-heading"><p>ONE WORKING SESSION</p><strong>21% used</strong><span>203.2k of 967k tokens</span></div>
+        <div className="ledger-chart"><div className="ledger-bar" aria-hidden="true"><i className="ledger-system"/><i className="ledger-tools"/><i className="ledger-skills"/><i className="ledger-messages"/><i className="ledger-free"/></div><div className="ledger-legend"><span><i className="key-system"/>System 0.9%</span><span><i className="key-tools"/>Tools 2.2%</span><span><i className="key-skills"/>Skills 0.3%</span><span><i className="key-messages"/>Messages 17.7%</span><span><i className="key-free"/>Remaining capacity</span></div></div>
+      </div>}
+
       <div className="article-layout">
         <aside className="article-aside"><p>FIELD NOTE</p><strong>{article.description}</strong></aside>
         <div className="article-body markdown-body" dangerouslySetInnerHTML={{ __html: markdownToHtml(article.body) }}/>

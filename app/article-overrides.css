@@ -348,6 +348,12 @@
   border-top: 1px solid #d5d1c5;
 }
 
+.article-table { margin: 28px 0; overflow-x: auto; }
+.article-table table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.5; }
+.article-table th,
+.article-table td { padding: 12px 14px; border-bottom: 1px solid #d5d1c5; text-align: left; vertical-align: top; }
+.article-table th { background: #ece9dd; color: var(--ink); font-weight: 700; }
+
 .markdown-feature {
   background: var(--ink);
 }

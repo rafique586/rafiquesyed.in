@@ -33,7 +33,8 @@ export function markdownToHtml(markdown: string) {
     listType = null;
   };
 
-  for (const line of lines) {
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
     if (line.startsWith('```')) {
       flushParagraph();
       closeList();
@@ -52,6 +53,22 @@ export function markdownToHtml(markdown: string) {
     if (!line.trim()) {
       flushParagraph();
       closeList();
+      continue;
+    }
+
+    if (line.trim().startsWith('|') && /^\|?[\s:|-]+\|?$/.test(lines[index + 1]?.trim() || '')) {
+      flushParagraph();
+      closeList();
+      const cells = (row: string) => row.trim().replace(/^\||\|$/g, '').split('|').map((cell) => cell.trim());
+      const headings = cells(line);
+      index += 2;
+      const rows: string[][] = [];
+      while (index < lines.length && lines[index].trim().startsWith('|')) {
+        rows.push(cells(lines[index]));
+        index += 1;
+      }
+      index -= 1;
+      output.push(`<div class="article-table"><table><thead><tr>${headings.map((cell) => `<th>${inlineMarkdown(cell)}</th>`).join('')}</tr></thead><tbody>${rows.map((row) => `<tr>${row.map((cell) => `<td>${inlineMarkdown(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`);
       continue;
     }
 

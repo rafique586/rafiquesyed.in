@@ -42,10 +42,6 @@ export default function Writing() {
         <div><p className="archive-topic">{article.topic} · {article.displayDate.toUpperCase()}</p><h2>{article.title}</h2><p>{article.description}</p></div>
         <span>READ THE ARTICLE ↗</span>
       </a>)}
-      <a className="published-feature tokenomics-feature" href="/writing/context-window-is-a-budget">
-        <div><p className="archive-topic">FINOPS + AI · PUBLISHED SEPTEMBER 2026</p><h2>Your Context Window Is a Budget</h2><p>What cloud cost engineering taught me about preserving useful AI context.</p></div>
-        <span>READ THE ARTICLE ↗</span>
-      </a>
       <a className="published-feature" href="/writing/software-configuration-management-still-matters">
         <div><p className="archive-topic">SCM + AI · PUBLISHED SEPTEMBER 2026</p><h2>Software Configuration Management Still Matters</h2><p>The engineering discipline AI cannot automate away.</p></div>
         <span>READ THE ARTICLE ↗</span>
