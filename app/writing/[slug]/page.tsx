@@ -66,6 +66,6 @@ export default async function MarkdownArticle({ params }: ArticlePageProps) {
       </div>
     </article>
 
-    <section className="article-next"><p className="kicker light">KEEP READING</p><h2>Ideas from practice,<br/><em>shared while they are useful.</em></h2><div className="article-next-links"><Link href="/writing">All writing ↗</Link><a href="https://medium.com/@rafique.syed" target="_blank" rel="noreferrer">Medium ↗</a><a href="https://www.instagram.com/explore/tags/taalchemy/" target="_blank" rel="noreferrer">Instagram · #Taalchemy ↗</a><a href="https://github.com/rafique586" target="_blank" rel="noreferrer">GitHub ↗</a></div></section>
+    <section className="article-next"><p className="kicker light">KEEP READING</p><h2>Ideas from practice,<br/><em>shared while they are useful.</em></h2><div className="article-next-links"><Link href="/writing">All writing ↗</Link><a href="https://medium.com/@rafique.syed" target="_blank" rel="noreferrer">Medium ↗</a><a href="https://www.instagram.com/taalchemy/" target="_blank" rel="noreferrer">Instagram · @Taalchemy ↗</a><a href="https://github.com/rafique586" target="_blank" rel="noreferrer">GitHub ↗</a></div></section>
   </main>;
 }

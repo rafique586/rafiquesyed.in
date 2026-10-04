@@ -86,6 +86,6 @@ export default function ScmArticle() {
       </div>
     </article>
 
-    <section className="article-next"><p className="kicker light">NEXT FIELD NOTE</p><h2>DevOps did not replace SCM.<br/><em>It expanded it.</em></h2><div className="article-next-links"><a href="/writing">Follow the writing archive ↗</a><a href="https://medium.com/@rafique.syed" target="_blank" rel="noreferrer">Medium ↗</a><a href="https://www.instagram.com/explore/tags/taalchemy/" target="_blank" rel="noreferrer">Instagram · #Taalchemy ↗</a><a href="https://github.com/rafique586" target="_blank" rel="noreferrer">GitHub ↗</a></div></section>
+    <section className="article-next"><p className="kicker light">NEXT FIELD NOTE</p><h2>DevOps did not replace SCM.<br/><em>It expanded it.</em></h2><div className="article-next-links"><a href="/writing">Follow the writing archive ↗</a><a href="https://medium.com/@rafique.syed" target="_blank" rel="noreferrer">Medium ↗</a><a href="https://www.instagram.com/taalchemy/" target="_blank" rel="noreferrer">Instagram · @Taalchemy ↗</a><a href="https://github.com/rafique586" target="_blank" rel="noreferrer">GitHub ↗</a></div></section>
   </main>;
 }
